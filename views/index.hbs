@@ -1,0 +1,35 @@
+<h1>{{title}}</h1>
+<div id="family_wrapper">
+  <h2>Houses</h2>
+  <ul id="family_list">
+    {{#each houses}}
+    <li>
+      {{this}}
+    </li>
+    {{/each}}
+  </ul>
+</div>
+<div id="character_wrapper">
+  <h2>Characters</h2>
+  <ul id="character_list">
+    {{#each characters}}
+    <li>
+      {{print_person}}
+    </li>
+    {{/each}}
+  </ul>
+</div>
+<div id="location_wrapper">
+  <h2>Locations</h2>
+  {{{testParagraph}}}
+  <ul id="location_list">
+    {{#each locations}}
+    <li>
+      {{name}}
+      {{#with cities}}
+      {{capital}}
+      {{/with}}
+    </li>
+    {{/each}}
+  </ul>
+</div>

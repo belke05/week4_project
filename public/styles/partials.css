@@ -1,0 +1,17 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: palegoldenrod;
+  padding: 1%;
+  font-size: 1rem;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+footer {
+  background-color: palegreen;
+  padding: 1%;
+}

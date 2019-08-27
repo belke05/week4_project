@@ -10,27 +10,67 @@ app.use(express.static(__dirname + "/public"));
 // router and then router redirect to one of the pages inside the views folder,
 // and then that page will be rendered.
 app.set("views", path.join(__dirname, "views"));
-app.set("view enginge", "hbs");
+app.set("view engine", "hbs");
 
 // register the partials you want to have in your basic layout
 // to start this will be a nav and a footer bar
-app.registerPartials(path.join(__dirname + "/views/partials"));
+hbs.registerPartials(path.join(__dirname + "/views/partials"));
+// receives current context as this context
+hbs.registerHelper("print_person", function() {
+  return this.first_name + " " + this.last_name;
+});
 
 app.get("/", (req, res) => {
-  data = {};
-  res = app.render("index", data);
+  data = dataPage1;
+  res.render("index", data);
 });
 
-app.get("/page2", (req, res) => {
-  data = {};
-  res = app.render("page2", data);
+app.get("/characters", (req, res) => {
+  data = dataPage2;
+  res.render("characters", data);
 });
 
-app.get("/page3", (req, res) => {
-  data = {};
-  res = app.render("page3", data);
+app.get("/locations", (req, res) => {
+  data = dataPage3;
+  res.render("locations", data);
 });
 
 app.listen(4000, () => {
   console.log("port 4000 is listening");
 });
+
+// objects to use
+
+let dataPage1 = {
+  title: "a song of ice and fire",
+  characters: [
+    { first_name: "John", last_name: "Snow" },
+    { first_name: "Tyrion", last_name: "Lannister" },
+    { first_name: "tywin", last_name: "Lannister" }
+  ],
+  houses: [
+    "stark",
+    "lannister",
+    "tyrell",
+    "Greyjoy",
+    "Baratheon",
+    "Targaryen",
+    "Greyjoy",
+    "Tully",
+    "Arryn",
+    "Martel",
+    "Frey"
+  ],
+  locations: [
+    { name: "The North", cities: { capital: "Winterfel", population: 20000 } },
+    {
+      name: "Stormlands",
+      cities: { capital: "Kings Landing", population: 1000000 }
+    }
+  ],
+  testParagraph: "<p>" + "some text" + "</p>"
+};
+
+let dataPage2 = {};
+
+let dataPage3 = {};
